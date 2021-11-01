@@ -56,7 +56,7 @@ def addition(n):
     
 numbers = [1,2,3,4]
 result = map(addition, numbers)
-result = map(lambda num: num + num) #works the same way
+result = map(lambda num: num + num) #works the same way 
 print(list(result))
 
 
