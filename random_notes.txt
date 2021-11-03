@@ -1,0 +1,25 @@
+pip install pandas
+pip install sklearn
+pip install seaborn
+
+sklearn.datasets import load_iris may be needed
+
+ml1:
+digits is a bunch object
+--digits.datasets
+--digits.target
+--digits.images
+
+digits.data = [ 0.  0.  2. 12.  4.  0.  0.  0.  0.  1. 12. 16. 16.  3.  0.  0.  0.  7.
+ 16.  6.  4. 13.  0.  0.  0.  8. 16.  6.  0. 13.  5.  0.  0.  1. 16.  5.
+  0.  7.  9.  0.  0.  0. 16.  8.  0.  8. 12.  0.  0.  0. 13. 14. 14. 16.
+ 10.  0.  0.  0.  4. 14. 15.  7.  0.  0.]
+
+ 8x8 (each group of 8 numbers is a row)
+
+digits.target = 0 --> represents what the digit is
+
+data.shape = 1797 rows with 64 columns --> total data
+
+target has only one column --> one number
+
