@@ -24,7 +24,7 @@ data_test = data_test.T.values
 #print(data_test)
 #target_test = ersb.loc['Target']
 target_test = ersb.Target.values
-print(target_test)
+#print(target_test)
 
 
 
@@ -46,10 +46,22 @@ expected = target_test
 #Display Wrong (2)
 wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
 
-print(wrong)
+#print(wrong)
+
+infile = pd.read_csv('target_names.csv')
+target_class = infile.T.loc['target_class'] 
+#print(target_rating)
+target_name = infile.T.loc['target_name']
+#print(target_name)
 
 
+outfile = open('predicted_ratings.csv','w')
 
+for target in predicted:
+    if target_class == target:
+        outfile.write(ersb['Title'], target_name)
+outfile.close()
+    
 
 ''''''
 
