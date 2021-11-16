@@ -5,22 +5,29 @@ knn = KNeighborsClassifier()
 
 
 rating = pd.read_csv('gameratings.csv')
-rating = rating.T
+
 
 #print(rating.loc['title'])
 
-data_train = rating.loc['console': 'violence']
+data_train = rating.T.loc['console': 'violence']
+data_train = data_train.T.values
 #print(data_train)
-target_train = rating.loc['Target']
+#target_train = rating.T.loc['Target']
+target_train = rating.Target.values
 #print(target_train)
 
 ersb = pd.read_csv('test_esrb.csv')
-ersb = ersb.T
 
-data_test = ersb.loc['console': 'violence']
+
+data_test = ersb.T.loc['console': 'violence']
+data_test = data_test.T.values
 #print(data_test)
-target_test = ersb.loc['Target']
-#print(target_test)
+#target_test = ersb.loc['Target']
+target_test = ersb.Target.values
+print(target_test)
+
+
+
 
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier()
@@ -32,11 +39,17 @@ predicted = knn.predict(X= data_test) #dont need a target y because it predicts 
 expected = target_test
 
 
-print(predicted[:20])
-print(expected[:20])
+#print(predicted[:20])
+#print(expected[:20])
 
+
+#Display Wrong (2)
 wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
 
 print(wrong)
+
+
+
+
 ''''''
 
