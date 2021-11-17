@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
-
+import csv
 knn = KNeighborsClassifier()
 
 
@@ -27,8 +27,6 @@ target_test = ersb.Target.values
 #print(target_test)
 
 
-
-
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier()
 
@@ -48,20 +46,23 @@ wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
 
 #print(wrong)
 
-infile = pd.read_csv('target_names.csv')
-target_class = infile.T.loc['target_class'] 
-#print(target_rating)
-target_name = infile.T.loc['target_name']
-#print(target_name)
+
+target_names = {1: 'Everyone', 2: 'Everyone 10+', 3: 'Mature', 4: 'Teen'}
+
+outfile = open('predicted_ratings.csv','w', newline = '')
+writer = csv.writer(outfile)
+writer.writerow(['title', 'prediction'])
+
+for x,y in zip(ersb['title'], predicted):
+    for key in target_names:
+        if y == key:
+            y= target_names[key]
+            writer.writerow([x,y])
 
 
-outfile = open('predicted_ratings.csv','w')
 
-for target in predicted:
-    if target_class == target:
-        outfile.write(ersb['Title'], target_name)
 outfile.close()
-    
 
-''''''
+
+
 
