@@ -44,7 +44,7 @@ expected = target_test
 #Display Wrong (2)
 wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
 
-#print(wrong)
+print(wrong)
 
 
 target_names = {1: 'Everyone', 2: 'Everyone 10+', 3: 'Mature', 4: 'Teen'}
